@@ -129,37 +129,37 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a wire:navigate class=" nav-link collapsed" href="#">
+        <a wire:navigate class=" nav-link collapsed" wire:navigate href="{{ route('dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li>
       <li class="nav-item">
-        <a wire:navigate class=" nav-link collapsed" href="#">
+        <a wire:navigate class=" nav-link collapsed" wire:navigate href="{{ route('profile') }}">
           <i class="bi bi-person-lines-fill"></i>
           <span>Profile</span>
         </a>
       </li>
       <li class="nav-item">
-        <a wire:navigate class=" nav-link collapsed" href="#">
+        <a wire:navigate class=" nav-link collapsed" wire:navigate href="{{ route('customer') }}">
           <i class="bi bi-people"></i>
           <span>Customers</span>
         </a>
       </li>
       <li class="nav-item">
-        <a wire:navigate class=" nav-link collapsed" href="#">
+        <a wire:navigate class=" nav-link collapsed" wire:navigate href="{{ route('provider') }}">
           <i class="bi bi-globe"></i>
           <span>Providers</span>
         </a>
       </li>
       <li class="nav-item">
-        <a wire:navigate class=" nav-link collapsed" href="#">
+        <a wire:navigate class=" nav-link collapsed" wire:navigate href="{{ route('card') }}">
           <i class="bi bi-sd-card"></i>
           <span>Cards</span>
         </a>
       </li>
       <li class="nav-item">
-        <a wire:navigate class=" nav-link collapsed" href="#">
+        <a wire:navigate class=" nav-link collapsed" wire:navigate href="{{ route('sale') }}">
           <i class="bi bi-clipboard2-data"></i>
           <span>Sales</span>
         </a>
