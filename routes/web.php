@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Card;
+use App\Livewire\CardComponent;
 use App\Livewire\Customer;
 use App\Livewire\Dashboard;
 use App\Livewire\Profile;
@@ -12,5 +12,5 @@ Route::get('/', Dashboard::class)->name('dashboard');
 Route::get('/users', Profile::class)->name('profile');
 Route::get('/customers', Customer::class)->name('customer');
 Route::get('/providers', ProviderComponent::class)->name('provider');
-Route::get('/cards', Card::class)->name('card');
+Route::get('/cards', CardComponent::class)->name('card');
 Route::get('/sales', Sale::class)->name('sale');
