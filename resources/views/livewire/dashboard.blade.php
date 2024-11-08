@@ -42,8 +42,6 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{ $amountSale }}</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
                     </div>
                   </div>
                 </div>
@@ -77,8 +75,6 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{ $totalSale }}</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
                     </div>
                   </div>
                 </div>
@@ -113,8 +109,6 @@
                     </div>
                     <div class="ps-3">
                       <h6>{{ $customers }}</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
                     </div>
                   </div>
 
@@ -143,13 +137,11 @@
                   <h5 class="card-title">Providers <span>| This Year</span></h5>
 
                   <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-globe"></i>
+                    <div class="card-icon bg-light rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-globe text-info "></i>
                     </div>
                     <div class="ps-3">
                       <h6>{{ $providers }}</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
                     </div>
                   </div>
 

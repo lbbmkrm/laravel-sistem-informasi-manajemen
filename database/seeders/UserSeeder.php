@@ -14,7 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Menambahkan data dummy untuk user pertama (admin)
         User::create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
@@ -22,7 +21,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
-        // Menambahkan data dummy untuk user kedua (bukan admin)
         User::create([
             'name' => 'Regular User',
             'email' => 'user@example.com',
@@ -30,7 +28,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
-        // Menambahkan data dummy untuk user ketiga (bukan admin)
         User::create([
             'name' => 'John Doe',
             'email' => 'john.doe@example.com',
@@ -38,7 +35,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
-        // Menambahkan data dummy untuk user keempat (bukan admin)
         User::create([
             'name' => 'Jane Smith',
             'email' => 'jane.smith@example.com',
@@ -46,7 +42,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
-        // Menambahkan data dummy untuk user kelima (admin)
         User::create([
             'name' => 'Super Admin',
             'email' => 'superadmin@example.com',

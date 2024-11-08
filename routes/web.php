@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Auth\Login;
 use App\Livewire\CardComponent;
 use App\Livewire\Customer;
 use App\Livewire\Dashboard;
@@ -14,3 +15,6 @@ Route::get('/customers', Customer::class)->name('customer');
 Route::get('/providers', ProviderComponent::class)->name('provider');
 Route::get('/cards', CardComponent::class)->name('card');
 Route::get('/sales', SaleComponent::class)->name('sale');
+
+
+Route::get('/login', Login::class)->name('login');
