@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Provider;
+use Livewire\Attributes\Title;
 
 class ProviderComponent extends Component
 {
+    #[Title('Providers')]
     public $providers;
 
     public function mount()

@@ -6,10 +6,12 @@ use App\Models\Customer;
 use App\Models\Provider;
 use App\Models\Sale;
 use App\Models\User;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Dashboard extends Component
 {
+    #[Title('Dashboard')]
     public $customers;
     public $providers;
     public $totalSale;

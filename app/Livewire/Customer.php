@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use App\Models\Customer as ModelsCustomer;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Customer extends Component
 {
+    #[Title('Customers')]
     public $customers;
     public function mount()
     {
