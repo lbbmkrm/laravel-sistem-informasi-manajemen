@@ -6,7 +6,7 @@
       <h1>Providers</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
           <li class="breadcrumb-item active">Providers</li>
         </ol>
       </nav>

@@ -4,9 +4,9 @@
       <h1>Profile</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ route('profile') }}">Profile</a></li>
-          <li class="breadcrumb-item"><a href="{{ route('profile.create') }}">Create</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('profile') }}">Profile</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('profile.create') }}">Create</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

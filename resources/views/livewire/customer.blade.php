@@ -4,8 +4,8 @@
       <h1>Customer</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ route('customer') }}">Customer</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('customer') }}">Customer</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -19,10 +19,12 @@
               <div class="row">
                 <h5 class="card-title col-6">Customer List</h5>
                 <div class="col-6">
-                  <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3">
-                    <i class="bi bi-person-plus"></i> 
-                    New
-                  </button>
+                  <a href="{{ route('customer.create') }}">
+                    <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3">
+                      <i class="bi bi-person-plus"></i> 
+                      New
+                    </button>
+                  </a>
                 </div>
               </div>
               <table class="table ">
