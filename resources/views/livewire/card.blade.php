@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a wire:navigate href="{{ route('customer') }}">Card</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('card') }}">Card</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -19,9 +19,11 @@
               <div class="row">
                 <h5 class="card-title col-6">Account List</h5>
                 <div class="col-6">
-                  <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3 me-3">
+                  <a wire:navigate href="{{ route('card.create') }}">
+                    <button class="btn btn-primary btn-sm float-end mt-3 me-3">
                     <i class="bi bi-sd-card"> Add</i>
                   </button>
+                  </a>
                 </div>
               </div>
               <h5 class="card-title">Card List</h5>
@@ -43,7 +45,7 @@
                     <td>{{ $card->name }}</td>
                     <td>{{ $card->provider->name }}</td>
                     <td>{{ $card->stock }}</td>
-                    <td>{{ $card->price }}</td>
+                    <td>Rp. {{ $card->price }}</td>
                     <td>{{ $card->created_at }}</td>
                   </tr>
                   @endforeach

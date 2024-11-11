@@ -10,6 +10,7 @@ class Card extends Model
 {
     protected $fillable = [
         'name',
+        'provider_id',
         'stock',
         'price'
     ];
