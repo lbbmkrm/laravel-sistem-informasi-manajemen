@@ -2,6 +2,7 @@
 
 use App\Livewire\Admin\CustomerCreate;
 use App\Livewire\Admin\ProfileCreate;
+use App\Livewire\Admin\ProviderCreate;
 use App\Livewire\Auth\Login;
 use App\Livewire\CardComponent;
 use App\Livewire\Customer;
@@ -30,3 +31,4 @@ Route::get('/login', Login::class)->name('login')->middleware(RedirectIfAuthenti
 
 Route::get('/users/create', ProfileCreate::class)->name('profile.create');
 Route::get('/customers/create', CustomerCreate::class)->name('customer.create');
+Route::get('/providers/create', ProviderCreate::class)->name('provider.create');

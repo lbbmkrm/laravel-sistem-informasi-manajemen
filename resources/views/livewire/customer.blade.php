@@ -19,10 +19,10 @@
               <div class="row">
                 <h5 class="card-title col-6">Customer List</h5>
                 <div class="col-6">
-                  <a href="{{ route('customer.create') }}">
-                    <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3">
-                      <i class="bi bi-person-plus"></i> 
-                      New
+                  <a wire:navigate href="{{ route('customer.create') }}">
+                    <button class="btn btn-primary btn-sm float-end mt-3">
+                      <i class="bi bi-person-plus"> New</i> 
+                      
                     </button>
                   </a>
                 </div>
