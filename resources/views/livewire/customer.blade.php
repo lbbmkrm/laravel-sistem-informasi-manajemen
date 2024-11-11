@@ -16,7 +16,15 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Customer List</h5>
+              <div class="row">
+                <h5 class="card-title col-6">Customer List</h5>
+                <div class="col-6">
+                  <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3">
+                    <i class="bi bi-person-plus"></i> 
+                    New
+                  </button>
+                </div>
+              </div>
               <table class="table ">
                 <thead>
                   <tr>

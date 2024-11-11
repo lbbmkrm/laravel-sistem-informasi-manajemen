@@ -16,6 +16,15 @@
 
           <div class="card">
             <div class="card-body">
+              <div class="row">
+                <h5 class="card-title col-6">Account List</h5>
+                <div class="col-6">
+                  <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3 me-3">
+                    <i class="bi bi-clipboard2-data"></i> 
+                    Create
+                  </button>
+                </div>
+              </div>
               <h5 class="card-title">Card List</h5>
               <table class="table ">
                 <thead>
