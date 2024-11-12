@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a wire:navigate href="{{ route('customer') }}">Card</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('sale') }}">Sale</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -17,14 +17,15 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title col-6">Account List</h5>
+                <h5 class="card-title col-6">Sales List</h5>
                 <div class="col-6">
-                  <button wire:click='create' class="btn btn-primary btn-sm float-end mt-3 me-3">
-                    <i class="bi bi-clipboard2-data"> Create</i>
-                  </button>
+                  <a wire:navigate href="{{ route('sale.create') }}">
+                    <button class="btn btn-primary btn-sm float-end mt-3 me-3">
+                      <i class="bi bi-clipboard2-data"> Create</i>
+                    </button>
+                  </a>
                 </div>
               </div>
-              <h5 class="card-title">Card List</h5>
               <table class="table ">
                 <thead>
                   <tr>
@@ -42,7 +43,7 @@
                     <td>{{ $sale->created_at }}</td>
                     <td>{{ $sale->card->name }}</td>
                     <td>{{ $sale->amount }}</td>
-                    <td>{{ $sale->total }}</td>
+                    <td>Rp. {{ $sale->total }}</td>
                     <td>{{ $sale->customer->name }}</td>
                     <td>{{ $sale->user->name }}</td>
                   </tr>

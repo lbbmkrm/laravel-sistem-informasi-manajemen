@@ -21,7 +21,7 @@
 
               <!-- Header Row with Title and Add Button -->
               <div class="row">
-                <h5 class="card-title col-6">Account List</h5>
+                <h5 class="card-title col-6">Providers List</h5>
                 <div class="col-6">
                   <a wire:navigate href="{{ route('provider.create') }}">
                     <button class="btn btn-primary btn-sm float-end mt-3 me-3">
@@ -32,7 +32,6 @@
               </div>
 
               <!-- Provider Table -->
-              <h5 class="card-title">Provider List</h5>
               <table class="table">
                 <thead>
                   <tr>

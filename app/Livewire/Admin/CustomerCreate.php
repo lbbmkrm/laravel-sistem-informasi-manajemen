@@ -3,11 +3,14 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Customer;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CustomerCreate extends Component
 {
+    #[Title('Customer')]
+
     #[Validate('required')]
     public $name;
 

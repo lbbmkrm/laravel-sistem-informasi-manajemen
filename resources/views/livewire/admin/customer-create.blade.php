@@ -1,7 +1,7 @@
 <main id="main" class="main min-vh-100">
 
     <div class="pagetitle">
-      <h1>Profile</h1>
+      <h1>Customer</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>

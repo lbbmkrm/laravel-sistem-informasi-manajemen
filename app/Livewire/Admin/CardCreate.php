@@ -4,11 +4,14 @@ namespace App\Livewire\Admin;
 
 use App\Models\Card;
 use App\Models\Provider;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CardCreate extends Component
 {
+    #[Title('Card')]
+
     #[Validate('required')]
     public $name;
 

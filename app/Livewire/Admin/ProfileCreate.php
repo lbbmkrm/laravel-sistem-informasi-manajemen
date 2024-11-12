@@ -3,11 +3,14 @@
 namespace App\Livewire\Admin;
 
 use App\Models\User;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ProfileCreate extends Component
 {
+    #[Title('profile')]
+
     #[Validate('required')]
     public $name;
     #[Validate('required:email')]
