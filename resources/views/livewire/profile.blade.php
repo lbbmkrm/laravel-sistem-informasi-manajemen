@@ -19,11 +19,13 @@
               <div class="row">
                 <h5 class="card-title col-6">Account List</h5>
                 <div class="col-6">
-                  <a wire:navigate href="{{ route('profile.create') }}">
-                    <button class="btn btn-primary btn-sm float-end mt-3 me-3">
-                    <i class="bi bi-person-plus"> Create</i> 
-                  </button>
-                  </a>
+                  @can('create', App\Models\User::class)
+                    <a wire:navigate href="{{ route('profile.create') }}">
+                      <button class="btn btn-primary btn-sm float-end mt-3 me-3">
+                        <i class="bi bi-person-plus"> Create</i> 
+                      </button>
+                    </a>
+                  @endcan
                 </div>
               </div>
               <table class="table ">

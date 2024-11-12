@@ -37,8 +37,8 @@
                 <div class="col-12">
                     <select wire:model='role' class="form-select form-select-lg mb-3" >
                         <option selected>Role</option>
-                        <option value="admin">Admin</option>
-                        <option value="member">Member</option>
+                        <option value="1">Admin</option>
+                        <option value="0">Member</option>
                     </select>
                     @error('role') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>

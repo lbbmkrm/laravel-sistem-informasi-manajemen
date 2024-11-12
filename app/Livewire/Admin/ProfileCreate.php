@@ -9,7 +9,8 @@ use Livewire\Component;
 
 class ProfileCreate extends Component
 {
-    #[Title('profile')]
+
+    #[Title('Profile')]
 
     #[Validate('required')]
     public $name;
@@ -19,10 +20,7 @@ class ProfileCreate extends Component
     public $password;
     #[Validate('required')]
     public $role;
-    public $optionRole = [
-        'admin' => 'Admin',
-        'member' => 'Member'
-    ];
+    public $roles = [];
 
     public function create()
     {
@@ -31,7 +29,7 @@ class ProfileCreate extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
-            'role' => $this->role
+            'is_admin' => $this->role
         ]);
         $user->save();
 

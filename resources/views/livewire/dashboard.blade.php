@@ -17,7 +17,7 @@
           <div class="row">
 
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
+            <div class="col-xxl-4  {{ auth()->user()->is_admin ? 'col-md-6' : 'col-md-12' }}">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -50,7 +50,8 @@
             </div><!-- End Sales Card -->
 
             <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
+            @if (auth()->user()->is_admin)
+              <div class="col-xxl-4 col-md-6">
               <div class="card info-card revenue-card">
 
                 <div class="filter">
@@ -78,9 +79,10 @@
                     </div>
                   </div>
                 </div>
-
               </div>
-            </div><!-- End Revenue Card -->
+            </div>    
+              @endif
+            <!-- End Revenue Card -->
 
             <!-- Customers Card -->
             <div class="col-xxl-4 col-xl-6">
