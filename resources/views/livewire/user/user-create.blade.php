@@ -1,12 +1,12 @@
 <main id="main" class="main min-vh-100">
 
     <div class="pagetitle">
-      <h1>Profile</h1>
+      <h1>Profiles</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a wire:navigate href="{{ route('profile') }}">Profile</a></li>
-          <li class="breadcrumb-item"><a wire:navigate href="{{ route('profile.create') }}">Create</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('user') }}">Profile</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('user.create') }}">Create</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->

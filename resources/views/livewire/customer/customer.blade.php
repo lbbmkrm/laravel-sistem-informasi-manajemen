@@ -1,11 +1,11 @@
 <main id="main" class="main min-vh-100">
 
     <div class="pagetitle">
-      <h1>Profile</h1>
+      <h1>Customers</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a wire:navigate href="{{ route('profile') }}">Profile</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('customer') }}">Customer</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -17,15 +17,14 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title col-6">Account List</h5>
+                <h5 class="card-title col-6">Customer List</h5>
                 <div class="col-6">
-                  @can('create', App\Models\User::class)
-                    <a wire:navigate href="{{ route('profile.create') }}">
-                      <button class="btn btn-primary btn-sm float-end mt-3 me-3">
-                        <i class="bi bi-person-plus"> Create</i> 
-                      </button>
-                    </a>
-                  @endcan
+                  <a wire:navigate href="{{ route('customer.create') }}">
+                    <button class="btn btn-primary btn-sm float-end mt-3">
+                      <i class="bi bi-person-plus"> New</i> 
+                      
+                    </button>
+                  </a>
                 </div>
               </div>
               <table class="table ">
@@ -34,22 +33,18 @@
                     <th>
                       <b>N</b>ame
                     </th>
-                    <th>Email</th>
+                    <th>Phone</th>
                     <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                    <th>Role</th>
+                    <th>Address</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($users as $user)
+                  @foreach ($customers as $customer)
                   <tr>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at }}</td>
-                    @if ($user->is_admin)
-                        <td>Admin</td>
-                    @else
-                        <td>Member</td>
-                    @endif
+                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->phone }}</td>
+                    <td>{{ $customer->created_at }}</td>
+                    <td>{{ $customer->address }}</td>
                   </tr>
                   @endforeach
                 </tbody>

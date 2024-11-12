@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Provider;
 
 use App\Models\Provider;
 use Livewire\Attributes\Title;
@@ -23,6 +23,6 @@ class ProviderCreate extends Component
     }
     public function render()
     {
-        return view('livewire.admin.provider-create');
+        return view('livewire.provider.provider-create');
     }
 }

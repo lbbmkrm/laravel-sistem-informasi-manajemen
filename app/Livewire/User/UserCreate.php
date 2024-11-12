@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\User;
 
 use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class ProfileCreate extends Component
+class UserCreate extends Component
 {
 
     #[Title('Profile')]
@@ -33,10 +33,10 @@ class ProfileCreate extends Component
         ]);
         $user->save();
 
-        return redirect()->route('profile')->with('success', 'User create successful.');
+        return redirect()->route('user')->with('success', 'User create successful.');
     }
     public function render()
     {
-        return view('livewire.admin.profile-create');
+        return view('livewire.user.user-create');
     }
 }

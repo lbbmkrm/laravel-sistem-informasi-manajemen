@@ -7,7 +7,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item active">Providers</li>
+          <li class="breadcrumb-item active"><a wire:navigate href="{{ route('provider') }}">Providers</a></li>
         </ol>
       </nav>
     </div>

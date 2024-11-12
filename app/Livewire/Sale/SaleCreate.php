@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Sale;
 
 use App\Models\Card;
 use App\Models\Customer;
@@ -52,7 +52,7 @@ class SaleCreate extends Component
     }
     public function render()
     {
-        return view('livewire.admin.sale-create', [
+        return view('livewire.sale.sale-create', [
             'cardsData' => Card::all()
         ]);
     }

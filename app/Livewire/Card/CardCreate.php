@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Card;
 
 use App\Models\Card;
 use App\Models\Provider;
@@ -42,6 +42,6 @@ class CardCreate extends Component
     }
     public function render()
     {
-        return view('livewire.admin.card-create', ['providers' => Provider::all()]);
+        return view('livewire.card.card-create', ['providers' => Provider::all()]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin;
+namespace App\Livewire\Customer;
 
 use App\Models\Customer;
 use Livewire\Attributes\Title;
@@ -33,6 +33,6 @@ class CustomerCreate extends Component
     }
     public function render()
     {
-        return view('livewire.admin.customer-create');
+        return view('livewire.customer.customer-create');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Card;
 
 use App\Models\Card;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class CardComponent extends Component
+class CardList extends Component
 {
     #[Title('Cards')]
     public $cards;
@@ -17,6 +17,6 @@ class CardComponent extends Component
     }
     public function render()
     {
-        return view('livewire.card');
+        return view('livewire.card.card');
     }
 }

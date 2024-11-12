@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Sale;
 
-use App\Models\Sale as ModelsSale;
+use App\Models\Sale;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class SaleComponent extends Component
+class SaleList extends Component
 {
     #[Title('Sales')]
     public $sales;
 
     public function mount()
     {
-        $this->sales = ModelsSale::all();
+        $this->sales = Sale::all();
     }
     public function render()
     {
-        return view('livewire.sale');
+        return view('livewire.sale.sale');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Provider;
 
 use Livewire\Component;
 use App\Models\Provider;
 use Livewire\Attributes\Title;
 
-class ProviderComponent extends Component
+class ProviderList extends Component
 {
     #[Title('Providers')]
     public $providers;
@@ -21,6 +21,6 @@ class ProviderComponent extends Component
     }
     public function render()
     {
-        return view('livewire.provider');
+        return view('livewire.provider.provider');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\User;
 
 use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class Profile extends Component
+class UserList extends Component
 {
     #[Title('Profiles')]
     public $users;
@@ -16,6 +16,6 @@ class Profile extends Component
     }
     public function render()
     {
-        return view('livewire.profile');
+        return view('livewire.user.user');
     }
 }
