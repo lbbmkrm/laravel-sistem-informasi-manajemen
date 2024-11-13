@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Customer\CustomerList;
 use App\Livewire\Provider\ProviderList;
 use App\Livewire\Customer\CustomerCreate;
+use App\Livewire\Customer\CustomerUpdate;
 use App\Livewire\Provider\ProviderCreate;
 use App\Livewire\Sale\SaleList;
 use App\Livewire\User\UserUpdate;
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/customers')->group(function () {
         Route::get('/', CustomerList::class)->name('customer');
         Route::get('/create', CustomerCreate::class)->name('customer.create');
+        Route::get('/{id}/update', CustomerUpdate::class)->name('customer.update');
     });
 
     //providers

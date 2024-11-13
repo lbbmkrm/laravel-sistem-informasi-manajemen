@@ -54,7 +54,7 @@
                         <td>Member</td>
                     @endif
                     @if ($loginUser->is_admin)
-                        <td class="d-flex justify-content-between align-items-center">
+                    <td class="d-flex justify-content-between align-items-center">
                       <a wire:navigate href="{{ route('user.update', $user->id) }}" class="" style="">
                         <i class="bi bi-pencil-square text-warning"></i>
                       </a>

@@ -36,6 +36,9 @@
                     <th>Phone</th>
                     <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
                     <th>Address</th>
+                    @if ($loginUser->is_admin)
+                        <th>&nbsp;</th>
+                    @endif
                   </tr>
                 </thead>
                 <tbody>
@@ -45,6 +48,16 @@
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->created_at }}</td>
                     <td>{{ $customer->address }}</td>
+                    <td class="d-flex gap-4 align-items-center">
+                      <a wire:navigate href="{{ route('customer.update', $customer->id) }}" class="" style="">
+                        <i class="bi bi-pencil-square text-warning"></i>
+                      </a>
+                      @if ($loginUser->is_admin)
+                        <div wire:click='delete({{ $customer->id }})'style="cursor: pointer">
+                          <i class="bi bi-trash text-danger"></i>
+                        </div>
+                      @endif
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
