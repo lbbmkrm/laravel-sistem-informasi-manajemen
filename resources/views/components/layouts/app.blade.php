@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>{{ 'Azka Ponsel | ' .  ($title ?? 'Azka Ponsel') }}</title>
+  <title>{{ 'Azka Ponsel | ' .  ($title ?? '') }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -82,7 +82,7 @@
       </li>
 
       <li class="nav-item">
-        <a wire:navigate class="nav-link collapsed" href="{{ route('profile') }}">
+        <a wire:navigate class="nav-link collapsed" href="{{ route('user') }}">
           <i class="bi bi-person-lines-fill"></i>
           <span>Profile</span>
         </a>
