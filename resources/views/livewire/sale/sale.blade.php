@@ -45,7 +45,13 @@
                     <td>{{ $sale->amount }}</td>
                     <td>Rp. {{ $sale->total }}</td>
                     <td>{{ $sale->customer->name }}</td>
-                    <td>{{ $sale->user->name }}</td>
+                    <td>
+                      @isset($sale->user)
+                        {{ $sale->user->name }}
+                      @else
+                        <i class="bi bi-person-x text-danger"></i>
+                      @endisset
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
