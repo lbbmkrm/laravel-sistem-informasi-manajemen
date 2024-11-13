@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable(false);
-            $table->unsignedBigInteger('card_id')->nullable(false);
-            $table->unsignedBigInteger('customer_id')->nullable(false);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('card_id')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->integer('amount')->nullable(false);
             $table->integer('total')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('card_id')->references('id')->on('cards');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('card_id')->references('id')->on('cards')->nullOnDelete();
+            $table->foreign('customer_id')->references('id')->on('customers')->nullOnDelete();
         });
     }
 

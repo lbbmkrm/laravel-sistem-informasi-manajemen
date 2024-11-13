@@ -29,6 +29,6 @@ class UserList extends Component
         $user->delete();
 
         $this->users = User::all();
-        $this->loginUser = Auth::loginUser();
+        $this->loginUser = Auth::user();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Livewire\Customer;
 
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -20,5 +21,11 @@ class CustomerList extends Component
     public function render()
     {
         return view('livewire.customer.customer');
+    }
+
+    public function delete($id)
+    {
+        DB::delete("DELETE FROM customers WHERE id = {$id};");
+        return $this->customers = Customer::all();
     }
 }
