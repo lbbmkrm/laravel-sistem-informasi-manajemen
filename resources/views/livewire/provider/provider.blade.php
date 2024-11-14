@@ -61,7 +61,7 @@
                           <a wire:navigate href="{{ route('provider.update',$provider->id) }}" class="" style="">
                             <i class="bi bi-pencil-square text-warning"></i>
                           </a>
-                          <div wire:click=''style="cursor: pointer">
+                          <div wire:click='delete({{ $provider->id }})'style="cursor: pointer">
                             <i class="bi bi-trash text-danger"></i>
                           </div>
                         </td>

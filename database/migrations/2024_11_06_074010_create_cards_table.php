@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('provider_id')->nullable(false);
+            $table->unsignedBigInteger('provider_id')->nullable();
             $table->string('name', 100)->nullable(false);
             $table->integer('stock')->nullable();
             $table->integer('price')->nullable();
             $table->timestamps();
 
-            $table->foreign('provider_id')->references('id')->on('providers');
+            $table->foreign('provider_id')->references('id')->on('providers')->nullOnDelete();
         });
     }
 
