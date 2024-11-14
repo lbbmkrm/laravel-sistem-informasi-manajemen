@@ -27,7 +27,7 @@
                     <div class="col-12">
                         <label for="provider" class="form-label">Provider</label>
                         <select wire:model='provider' class="form-select form-select mb-3" >
-                            <option selected>{{ $provider->name }}</option>
+                            <option selected>{{ $card->provider->name }}</option>
                             @foreach ($providersList as $provider)
                                 <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                             @endforeach

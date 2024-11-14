@@ -18,7 +18,6 @@ class CardUpdate extends Component
     public $provider;
     public $stock;
     public $price;
-
     public $providersList;
     public array $providers;
 
@@ -26,7 +25,6 @@ class CardUpdate extends Component
     {
         $this->card = Card::find($id);
         $this->name = $this->card->name;
-        $this->provider = DB::table('providers')->where('id', $this->card->provider_id)->first();
         $this->stock = $this->card->stock;
         $this->price = $this->card->price;
 
@@ -35,9 +33,9 @@ class CardUpdate extends Component
 
     public function update()
     {
-        DB::table('cards')->where('id', $this->card->id)->update([
+        $this->card->update([
             'name' => $this->name,
-            'provider_id' => $this->provider->id,
+            'provider_id' => $this->provider,
             'stock' => $this->stock,
             'price' => $this->price
         ]);
