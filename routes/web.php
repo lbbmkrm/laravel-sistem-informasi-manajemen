@@ -15,6 +15,7 @@ use App\Livewire\Provider\ProviderList;
 use App\Livewire\Customer\CustomerCreate;
 use App\Livewire\Customer\CustomerUpdate;
 use App\Livewire\Provider\ProviderCreate;
+use App\Livewire\Provider\ProviderUpdate;
 use App\Livewire\Sale\SaleList;
 use App\Livewire\User\UserUpdate;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/providers')->group(function () {
         Route::get('/', ProviderList::class)->name('provider');
         Route::get('/create', ProviderCreate::class)->name('provider.create');
+        Route::get('/{id}/update', ProviderUpdate::class)->name('provider.update');
     });
 
     //cards

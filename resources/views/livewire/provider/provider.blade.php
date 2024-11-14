@@ -39,6 +39,9 @@
                     <th>Card Count</th>
                     <th>Created Date</th>
                     <th>Card Sales Amount</th>
+                    @if ($loginUser->is_admin)
+                      <th>&nbsp;</th>
+                    @endif
                   </tr>
                 </thead>
                 <tbody>
@@ -51,8 +54,18 @@
                         @php
                           $totalSalesAmount = $provider->cards->sum(fn($card) => $card->sales->sum('amount'));
                         @endphp
-                        Total Sales Amount: {{ $totalSalesAmount }}
+                        {{ $totalSalesAmount }}
                       </td>
+                      @if ($loginUser->is_admin)
+                        <td class="d-flex justify-content-between align-items-center">
+                          <a wire:navigate href="{{ route('provider.update',$provider->id) }}" class="" style="">
+                            <i class="bi bi-pencil-square text-warning"></i>
+                          </a>
+                          <div wire:click=''style="cursor: pointer">
+                            <i class="bi bi-trash text-danger"></i>
+                          </div>
+                        </td>
+                      @endif
                     </tr>
                   @endforeach
                 </tbody>

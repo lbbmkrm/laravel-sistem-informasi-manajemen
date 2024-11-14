@@ -4,12 +4,14 @@ namespace App\Livewire\Provider;
 
 use Livewire\Component;
 use App\Models\Provider;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
 
 class ProviderList extends Component
 {
     #[Title('Providers')]
     public $providers;
+    public $loginUser;
 
     public function mount()
     {
@@ -18,6 +20,8 @@ class ProviderList extends Component
                 $query->select('id', 'card_id', 'amount');
             }])
             ->get();
+
+        $this->loginUser = Auth::user();
     }
     public function render()
     {
