@@ -21,17 +21,18 @@
                 @csrf
                 <div class="col-12">
                   <label for="inputNanme4" class="form-label">Name</label>
-                  <input wire:model='name' type="text" class="form-control" id="inputNanme4">
+                  <input wire:model='name' type="text" class="form-control" id="inputNanme4" autocomplete="off">
                   @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-12">
                   <label for="phone" class="form-label">Phone</label>
-                  <input wire:model='phone' type="text" class="form-control" id="phone">
+                  <input wire:model='phone' type="text" class="form-control" id="phone" autocomplete="off">
                   @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-12">
                     <label for="address" class="form-label">Address</label>
-                    <textarea wire:model="address" class="form-control" placeholder="Customer Address..." id="address" style="height: 100px;"></textarea>
+                    <textarea wire:model="address" class="form-control" placeholder="Customer Address..." id="address" 
+                    style="height: 100px;" autocomplete="off"></textarea>
                     @error('address')
                         <div class="alert alert-danger" role="alert">
                             {{ $message }}

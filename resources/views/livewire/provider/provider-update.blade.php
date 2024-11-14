@@ -20,7 +20,8 @@
               <form wire:submit='update' class="row g-3">
                 @csrf
                 <div class="col-12">
-                  <input wire:model='providerName' class="form-control form-control-lg" type="text" placeholder="Provider's name...">
+                  <input wire:model='providerName' class="form-control form-control-lg" type="text" 
+                  placeholder="Provider's name..." autocomplete="off">
                 </div>
                 <div class="text-center d-grid">
                   <button type="submit" class="btn btn-primary">Update</button>

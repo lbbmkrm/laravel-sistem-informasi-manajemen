@@ -7,6 +7,7 @@ use App\Livewire\User\UserCreate;
 use App\Livewire\Card\CardCreate;
 use App\Livewire\Sale\SaleCreate;
 use App\Livewire\Card\CardList;
+use App\Livewire\Card\CardUpdate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('cards')->group(function () {
         Route::get('/', CardList::class)->name('card');
         Route::get('/create', CardCreate::class)->name('card.create');
+        Route::get('/{id}/update', CardUpdate::class)->name('card.update');
     });
 
     //sales

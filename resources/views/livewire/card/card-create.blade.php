@@ -21,7 +21,7 @@
                     @csrf
                     <div class="col-12">
                     <label for="inputNanme4" class="form-label">Name</label>
-                    <input wire:model='name' type="text" class="form-control" id="inputNanme4">
+                    <input wire:model='name' type="text" class="form-control" id="inputNanme4" autocomplete="off">
                     @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">

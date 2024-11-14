@@ -36,16 +36,35 @@
                     <th>Stock</th> 
                     <th>Price</th> 
                     <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                    @if ($loginUser->is_admin)
+                        <th>&nbsp;</th>
+                    @endif
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($cards as $card)
                   <tr>
                     <td>{{ $card->name }}</td>
-                    <td>{{ $card->provider->name }}</td>
+                    <td>
+                    @isset($card->provider)
+                      {{ $card->provider->name }}
+                    @else
+                      <i class="bi bi-file-earmark-x text-danger"></i>
+                    @endisset
+                    </td>
                     <td>{{ $card->stock }}</td>
                     <td>Rp. {{ $card->price }}</td>
                     <td>{{ $card->created_at }}</td>
+                    @if ($loginUser->is_admin)
+                        <td>
+                          <a wire:navigate href="{{ route('card.update', $card->id) }}">
+                            <i class="bi bi-pencil-square text-warning">{{ $card->id }}</i>
+                          </a>
+                          <td wire:click='delete({{ $card->id }})'style="cursor: pointer">
+                            <i class="bi bi-trash text-danger"></i>
+                          </td>
+                        </td>
+                    @endif
                   </tr>
                   @endforeach
                 </tbody>
