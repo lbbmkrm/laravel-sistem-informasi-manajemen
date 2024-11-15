@@ -22,7 +22,7 @@
                     <div class="col-12">
                         <label for="card" class="form-label">Card</label>
                         <select wire:model='card' class="form-select form-select mb-3" >
-                            <option selected>{{ $sale->card->name }}</option>
+                            <option value="{{ $sale->card_id }}" ">{{ $sale->card->name }}</option>
                             @foreach ($cardList as $card)
                                 <option value="{{ $card->id }}">{{ $card->name }}</option>
                             @endforeach

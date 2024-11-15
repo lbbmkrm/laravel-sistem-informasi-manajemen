@@ -24,7 +24,7 @@ class SaleUpdate extends Component
     public function mount(int $id)
     {
         $this->sale = Sale::find($id);
-        $this->card = Card::find($this->card);
+        $this->card = $this->sale->card_id;
         $this->cardList = Card::all();
         $this->amount = $this->sale->amount;
         $this->customer = $this->sale->customer->name;
