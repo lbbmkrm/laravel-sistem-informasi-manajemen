@@ -1,0 +1,75 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\Provider;
+use App\Models\User;
+use Database\Seeders\DatabaseSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Livewire\Livewire;
+use Tests\TestCase;
+
+class ProviderTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public function testProviderList()
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $user = User::where('is_admin', true)->first();
+
+        $this->actingAs($user)->get('/providers')
+            ->assertStatus(200);
+    }
+
+    public function testProviderCreate()
+    {
+        self::assertDatabaseEmpty('providers');
+
+        Livewire::test('provider.ProviderCreate')
+            ->set('name', 'New Provider')
+            ->call('create');
+
+        self::assertDatabaseHas('providers', [
+            'name' => 'New Provider'
+        ]);
+    }
+
+    public function testProviderUpdate()
+    {
+        $this->seed(DatabaseSeeder::class);
+        self::assertDatabaseHas('providers', [
+            'name' => 'Provider A'
+        ]);
+
+        $provider = Provider::where('name', 'Provider A')->first();
+
+        Livewire::test('provider.ProviderUpdate', [$provider->id])
+            ->set('providerName', 'Provider Updated')
+            ->call('update');
+
+        self::assertDatabaseHas('providers', [
+            'name' => 'Provider Updated'
+        ]);
+    }
+
+    public function testProviderDelete()
+    {
+        $this->seed(DatabaseSeeder::class);
+        $admin = User::where('is_admin', true)->first();
+        self::assertDatabaseHas('providers', [
+            'name' => 'Provider A'
+        ]);
+        $provider = Provider::where('name', 'Provider A')->first();
+
+        $this->actingAs($admin);
+        Livewire::test('provider.ProviderList')
+            ->call('delete', $provider->id);
+
+        self::assertDatabaseMissing('providers', [
+            'name' => 'Provider A'
+        ]);
+    }
+}
