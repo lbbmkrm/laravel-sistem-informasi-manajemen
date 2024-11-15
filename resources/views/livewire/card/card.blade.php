@@ -58,7 +58,7 @@
                     @if ($loginUser->is_admin)
                         <td>
                           <a wire:navigate href="{{ route('card.update', $card->id) }}">
-                            <i class="bi bi-pencil-square text-warning">{{ $card->id }}</i>
+                            <i class="bi bi-pencil-square text-warning"></i>
                           </a>
                           <td wire:click='delete({{ $card->id }})'style="cursor: pointer">
                             <i class="bi bi-trash text-danger"></i>

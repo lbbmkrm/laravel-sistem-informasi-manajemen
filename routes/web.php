@@ -18,6 +18,7 @@ use App\Livewire\Customer\CustomerUpdate;
 use App\Livewire\Provider\ProviderCreate;
 use App\Livewire\Provider\ProviderUpdate;
 use App\Livewire\Sale\SaleList;
+use App\Livewire\Sale\SaleUpdate;
 use App\Livewire\User\UserUpdate;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('sales')->group(function () {
         Route::get('/', SaleList::class)->name('sale');
         Route::get('/create', SaleCreate::class)->name('sale.create');
+        Route::get('/{id}/update', SaleUpdate::class)->name('sale.update');
     });
 
 
