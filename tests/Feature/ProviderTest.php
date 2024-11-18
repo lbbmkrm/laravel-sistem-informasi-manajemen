@@ -2,18 +2,16 @@
 
 namespace Tests\Feature;
 
-use App\Models\Provider;
-use App\Models\User;
-use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Livewire\Livewire;
 use Tests\TestCase;
+use App\Models\User;
+use Livewire\Livewire;
+use App\Models\Provider;
+use Database\Seeders\DatabaseSeeder;
 
 class ProviderTest extends TestCase
 {
     use RefreshDatabase;
-
     public function testProviderList()
     {
         $this->seed(DatabaseSeeder::class);

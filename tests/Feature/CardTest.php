@@ -2,20 +2,18 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use App\Models\Card;
-use App\Models\Provider;
 use App\Models\User;
+use Livewire\Livewire;
+use App\Models\Provider;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\ProviderSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Livewire\Livewire;
-use Tests\TestCase;
 
 class CardTest extends TestCase
 {
     use RefreshDatabase;
-
     public function testCardList()
     {
         $this->seed(DatabaseSeeder::class);

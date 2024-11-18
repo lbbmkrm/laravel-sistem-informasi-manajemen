@@ -2,19 +2,17 @@
 
 namespace Tests\Feature;
 
-use App\Models\Customer;
-use App\Models\User;
-use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\UserSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Livewire\Livewire;
 use Tests\TestCase;
+use App\Models\User;
+use Livewire\Livewire;
+use App\Models\Customer;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\DatabaseSeeder;
 
 class CustomerTest extends TestCase
 {
     use RefreshDatabase;
-
     public function testCustomerList()
     {
         $this->seed(DatabaseSeeder::class);

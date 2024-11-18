@@ -22,7 +22,7 @@ class CardSeeder extends Seeder
                 'provider_id' => $provider->id,  // Menghubungkan dengan provider_id
                 'name' => $provider->name . ' Card 1', // Nama card berdasarkan provider
                 'stock' => rand(10, 100),  // Stock acak antara 10 dan 100
-                'price' => rand(5000, 100000),  // Harga acak antara 5.000 dan 100.000
+                'price' => 100_000,  // Harga acak antara 5.000 dan 100.000
             ]);
 
             Card::create([

@@ -60,7 +60,13 @@
                     </td>
                     <td>{{ $sale->amount }}</td>
                     <td>Rp. {{ $sale->total }}</td>
-                    <td>{{ $sale->customer->name }}</td>
+                    <td>
+                      @isset($sale->customer)
+                        {{ $sale->customer->name }}
+                      @else
+                        <i class="bi bi-person-x text-danger"></i>
+                      @endisset
+                    </td>
                     <td>{{ $sale->created_at }}</td>
                      @if (auth()->user()->is_admin)
                         <td>
