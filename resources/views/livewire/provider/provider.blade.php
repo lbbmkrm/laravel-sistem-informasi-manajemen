@@ -21,11 +21,18 @@
 
               <!-- Header Row with Title and Add Button -->
               <div class="row">
-                <h5 class="card-title col-6">Providers List</h5>
-                <div class="col-6">
+                <h5 class="card-title col-4">Providers List</h5>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                  <a href="{{ route('data.provider') }}">
+                    <button type="button" class="btn btn-sm btn-outline-success ">
+                      <i class="bi bi-download"></i>
+                    </button>
+                  </a>
+                </div>
+                <div class="col-4">
                   <a wire:navigate href="{{ route('provider.create') }}">
-                    <button class="btn btn-primary btn-sm float-end mt-3 me-3">
-                    <i class="bi bi-globe"> Add</i>
+                    <button class="btn btn-outline-primary btn-sm float-end mt-3 me-3">
+                    <i class="bi bi-cloud-plus-fill"> Add</i>
                   </button>
                   </a>
                 </div>

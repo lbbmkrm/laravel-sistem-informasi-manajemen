@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataController;
 use App\Livewire\Dashboard;
 use App\Livewire\Auth\Login;
 use App\Livewire\User\UserList;
@@ -58,6 +59,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/', SaleList::class)->name('sale');
         Route::get('/create', SaleCreate::class)->name('sale.create');
         Route::get('/{id}/update', SaleUpdate::class)->name('sale.update');
+    });
+
+    //data download
+    Route::controller(DataController::class)->group(function () {
+        Route::get('/sales/download', 'saleDownload')->name('data.sale');
+        Route::get('/cards/download', 'cardDownload')->name('data.card');
+        Route::get('/providers/download', 'providerDownload')->name('data.provider');
+        Route::get('/customers/download', 'customerDownload')->name('data.customer');
     });
 
 

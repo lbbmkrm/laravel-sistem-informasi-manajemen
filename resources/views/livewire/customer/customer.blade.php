@@ -17,12 +17,18 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title col-6">Customer List</h5>
-                <div class="col-6">
+                <h5 class="card-title col-4">Customer List</h5>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                  <a href="{{ route('data.customer') }}">
+                    <button type="button" class="btn btn-sm btn-outline-success ">
+                      <i class="bi bi-download"></i>
+                    </button>
+                  </a>
+                </div>
+                <div class="col-4">
                   <a wire:navigate href="{{ route('customer.create') }}">
-                    <button class="btn btn-primary btn-sm float-end mt-3">
-                      <i class="bi bi-person-plus"> New</i> 
-                      
+                    <button class="btn btn-outline-primary btn-sm float-end mt-3">
+                      <i class="bi bi-person-plus-fill"> New</i>
                     </button>
                   </a>
                 </div>

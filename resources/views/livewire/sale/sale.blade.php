@@ -16,11 +16,18 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title col-6">Sales List</h5>
-                <div class="col-6">
+                <h5 class="card-title col-4">Sales List</h5>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                  <a href="{{ route('data.sale') }}">
+                    <button type="button" class="btn btn-sm btn-outline-success ">
+                      <i class="bi bi-download"></i>
+                    </button>
+                  </a>
+                </div>
+                <div class="col-4">
                   <a wire:navigate href="{{ route('sale.create') }}">
-                    <button class="btn btn-primary btn-sm float-end mt-3 me-3">
-                      <i class="bi bi-clipboard2-data"> Create</i>
+                    <button class="btn btn-outline-primary btn-sm float-end mt-3 me-3">
+                      <i class="bi bi-clipboard2-plus-fill"> Create</i>
                     </button>
                   </a>
                 </div>
@@ -59,7 +66,7 @@
                       @endisset
                     </td>
                     <td>{{ $sale->amount }}</td>
-                    <td>Rp. {{ $sale->total }}</td>
+                    <td>Rp. {{ number_format($sale->total, 0, ',', '.') }}</td>
                     <td>
                       @isset($sale->customer)
                         {{ $sale->customer->name }}

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Livewire\Sale\SaleList;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Card;

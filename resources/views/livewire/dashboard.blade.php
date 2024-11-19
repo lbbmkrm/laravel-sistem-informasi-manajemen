@@ -75,7 +75,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{ $totalSale }}</h6>
+                      <h6>Rp. {{ number_format($totalSale, 0, ',', '.') }}</h6>
                     </div>
                   </div>
                 </div>

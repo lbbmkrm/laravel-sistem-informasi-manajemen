@@ -3,9 +3,9 @@
 namespace App\Livewire\Sale;
 
 use App\Models\Sale;
-use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Illuminate\Support\Facades\DB;
 
 class SaleList extends Component
 {
@@ -14,7 +14,7 @@ class SaleList extends Component
 
     public function mount()
     {
-        $this->sales = Sale::all();
+        $this->sales = Sale::latest()->get();
     }
     public function render()
     {
@@ -25,6 +25,6 @@ class SaleList extends Component
     {
         DB::delete("DELETE FROM sales WHERE id = $id;");
 
-        return $this->sales = Sale::all();
+        return $this->sales = Sale::latest()->get();
     }
 }

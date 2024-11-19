@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a wire:navigate href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a wire:navigate href="{{ route('user') }}">Profile</a></li>
+          <li class="breadcrumb-item"><a wire:navigate href="{{ route('user') }}">Profiles</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,8 +21,8 @@
                 <div class="col-6">
                   @can('create', App\Models\User::class)
                     <a wire:navigate href="{{ route('user.create') }}">
-                      <button class="btn btn-primary btn-sm float-end mt-3 me-3">
-                        <i class="bi bi-person-plus"> Create</i> 
+                      <button class="btn btn-outline-primary btn-sm float-end mt-3 me-3">
+                        <i class="bi bi-person-plus-fill"> Create</i> 
                       </button>
                     </a>
                   @endcan

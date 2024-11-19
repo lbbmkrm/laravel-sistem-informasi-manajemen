@@ -17,11 +17,18 @@
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title col-6">Cards List</h5>
-                <div class="col-6">
+                <h5 class="card-title col-4">Cards List</h5>
+                <div class="col-4 d-flex justify-content-center align-items-center">
+                  <a href="{{ route('data.card') }}">
+                    <button type="button" class="btn btn-sm btn-outline-success ">
+                      <i class="bi bi-download"></i>
+                    </button>
+                  </a>
+                </div>
+                <div class="col-4">
                   <a wire:navigate href="{{ route('card.create') }}">
-                    <button class="btn btn-primary btn-sm float-end mt-3 me-3">
-                    <i class="bi bi-sd-card"> Add</i>
+                    <button class="btn btn-outline-primary btn-sm float-end mt-3 me-3">
+                    <i class="bi bi-plus-circle-fill"> Add</i>
                   </button>
                   </a>
                 </div>
@@ -53,7 +60,7 @@
                     @endisset
                     </td>
                     <td>{{ $card->stock }}</td>
-                    <td>Rp. {{ $card->price }}</td>
+                    <td>Rp.{{ number_format($card->price, 0, ',', '.') }}</td>
                     <td>{{ $card->created_at }}</td>
                     @if ($loginUser->is_admin)
                         <td>
