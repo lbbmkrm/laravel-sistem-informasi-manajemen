@@ -20,7 +20,7 @@ class SaleSeeder extends Seeder
         $cards = Card::all();
         $customers = Customer::all();
 
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 50) as $index) {
             Sale::create([
                 'user_id' => $users->random()->id,
                 'card_id' => $cards->random()->id,
