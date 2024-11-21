@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Provider;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProviderSeeder extends Seeder
 {
@@ -13,25 +12,31 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
-        // Menambahkan beberapa data dummy untuk tabel providers
-        Provider::create([
-            'name' => 'Provider A',
-        ]);
+        $providers = [
+            ['name' => 'Provider A'],
+            ['name' => 'Provider B'],
+            ['name' => 'Provider C'],
+            ['name' => 'Provider D'],
+            ['name' => 'Provider E'],
+            ['name' => 'Provider F'],
+            ['name' => 'Provider G'],
+            ['name' => 'Provider H'],
+            ['name' => 'Provider I'],
+            ['name' => 'Provider J'],
+            ['name' => 'Provider K'],
+            ['name' => 'Provider L'],
+            ['name' => 'Provider M'],
+            ['name' => 'Provider N'],
+            ['name' => 'Provider O'],
+            ['name' => 'Provider P'],
+            ['name' => 'Provider Q'],
+            ['name' => 'Provider R'],
+            ['name' => 'Provider S'],
+            ['name' => 'Provider T'],
+        ];
 
-        Provider::create([
-            'name' => 'Provider B',
-        ]);
-
-        Provider::create([
-            'name' => 'Provider C',
-        ]);
-
-        Provider::create([
-            'name' => 'Provider D',
-        ]);
-
-        Provider::create([
-            'name' => 'Provider E',
-        ]);
+        foreach ($providers as $provider) {
+            Provider::create($provider);
+        }
     }
 }

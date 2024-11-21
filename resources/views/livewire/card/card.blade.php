@@ -33,6 +33,16 @@
                   </a>
                 </div>
               </div>
+              <!-- Form Pencarian -->
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input 
+                    class="form-control form-control-sm w-50 mx-auto" 
+                    type="text" 
+                    wire:model.live="search"
+                    placeholder="Search by name, provider, stock, or price...">
+                </div>
+              </div>
               <table class="table ">
                 <thead>
                   <tr>
@@ -43,7 +53,7 @@
                     <th>Stock</th> 
                     <th>Price</th> 
                     <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
-                    @if ($loginUser->is_admin)
+                    @if (auth()->user()->is_admin)
                         <th>&nbsp;</th>
                     @endif
                   </tr>
@@ -62,7 +72,7 @@
                     <td>{{ $card->stock }}</td>
                     <td>Rp.{{ number_format($card->price, 0, ',', '.') }}</td>
                     <td>{{ $card->created_at }}</td>
-                    @if ($loginUser->is_admin)
+                    @if (auth()->user()->is_admin)
                         <td>
                           <a wire:navigate href="{{ route('card.update', $card->id) }}">
                             <i class="bi bi-pencil-square text-warning"></i>
@@ -76,6 +86,7 @@
                   @endforeach
                 </tbody>
               </table>
+              {{ $cards->links() }}
               <!-- End Table with stripped rows -->
 
             </div>

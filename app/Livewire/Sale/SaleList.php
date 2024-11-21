@@ -19,7 +19,16 @@ class SaleList extends Component
 
         return view('livewire.sale.sale', [
             'sales' => Sale::where('amount', 'LIKE', "%{$this->search}%")
-                ->orWhere('total', 'LIKE', "%{$this->search}%")->paginate(10)
+                ->orWhere('total', 'LIKE', "%{$this->search}%")
+                ->orWhereHas('card', function ($query) {
+                    $query->where('name', 'LIKE', "%{$this->search}%");
+                })
+                ->orWhereHas('customer', function ($query) {
+                    $query->where('name', 'LIKE', "%{$this->search}%");
+                })
+                ->orWhereHas('user', function ($query) {
+                    $query->where('name', 'LIKE', "%{$this->search}%");
+                })->paginate(10)
         ]);
     }
 
@@ -27,7 +36,7 @@ class SaleList extends Component
     {
         DB::delete("DELETE FROM sales WHERE id = $id;");
 
-        return $this->search = Sale::latest()->paginate(10);
+        return back()->with('success', 'Sale has deleted');
     }
 
     public function updatingSearch()

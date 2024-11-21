@@ -38,6 +38,17 @@
                 </div>
               </div>
 
+              <!-- Form Pencarian -->
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input 
+                    class="form-control form-control-sm w-50 mx-auto" 
+                    type="text" 
+                    wire:model.live="search"
+                    placeholder="Search by name...">
+                </div>
+              </div>
+
               <!-- Provider Table -->
               <table class="table">
                 <thead>
@@ -46,7 +57,7 @@
                     <th>Card Count</th>
                     <th>Created Date</th>
                     <th>Card Sales Amount</th>
-                    @if ($loginUser->is_admin)
+                    @if (auth()->user()->is_admin)
                       <th>&nbsp;</th>
                     @endif
                   </tr>
@@ -63,7 +74,7 @@
                         @endphp
                         {{ $totalSalesAmount }}
                       </td>
-                      @if ($loginUser->is_admin)
+                      @if (auth()->user()->is_admin)
                         <td class="d-flex justify-content-between align-items-center">
                           <a wire:navigate href="{{ route('provider.update',$provider->id) }}" class="" style="">
                             <i class="bi bi-pencil-square text-warning"></i>
@@ -77,6 +88,8 @@
                   @endforeach
                 </tbody>
               </table>
+
+              {{ $providers->links() }}
 
             </div> <!-- End Card Body -->
           </div> <!-- End Card -->

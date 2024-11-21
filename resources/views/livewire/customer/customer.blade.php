@@ -33,6 +33,16 @@
                   </a>
                 </div>
               </div>
+              <!-- Form Pencarian -->
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input 
+                    class="form-control form-control-sm w-50 mx-auto" 
+                    type="text" 
+                    wire:model.live="search"
+                    placeholder="Search by name, phone, or address...">
+                </div>
+              </div>
               <table class="table ">
                 <thead>
                   <tr>
@@ -42,7 +52,7 @@
                     <th>Phone</th>
                     <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
                     <th>Address</th>
-                    @if ($loginUser->is_admin)
+                    @if (auth()->user()->is_admin)
                         <th>&nbsp;</th>
                     @endif
                   </tr>
@@ -58,7 +68,7 @@
                       <a wire:navigate href="{{ route('customer.update', $customer->id) }}" class="" style="">
                         <i class="bi bi-pencil-square text-warning"></i>
                       </a>
-                      @if ($loginUser->is_admin)
+                      @if (auth()->user()->is_admin)
                         <div wire:click='delete({{ $customer->id }})'style="cursor: pointer">
                           <i class="bi bi-trash text-danger"></i>
                         </div>
@@ -68,6 +78,7 @@
                   @endforeach
                 </tbody>
               </table>
+              {{ $customers->links() }}
               <!-- End Table with stripped rows -->
 
             </div>

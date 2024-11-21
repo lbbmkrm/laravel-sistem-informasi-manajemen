@@ -11,21 +11,19 @@ use Livewire\Component;
 class CustomerList extends Component
 {
     #[Title('Customers')]
-    public $customers;
-    public $loginUser;
-    public function mount()
-    {
-        $this->customers = Customer::all();
-        $this->loginUser = Auth::user();
-    }
+    public $search;
     public function render()
     {
-        return view('livewire.customer.customer');
+        return view('livewire.customer.customer', [
+            'customers' => Customer::where('name', 'LIKE', "%{$this->search}%")
+                ->orWhere('phone', 'LIKE', "%{$this->search}%")
+                ->orWhere('address', 'LIKE', "%{$this->search}%")->simplePaginate(10)
+        ]);
     }
 
     public function delete($id)
     {
         DB::delete("DELETE FROM customers WHERE id = {$id};");
-        return $this->customers = Customer::all();
+        return back()->with('success', 'Customer deleted has successfull');
     }
 }
