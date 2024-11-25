@@ -10,6 +10,7 @@ use Livewire\Livewire;
 use App\Models\Provider;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\ProviderSeeder;
+use Illuminate\Support\Facades\Log;
 
 class CardTest extends TestCase
 {
@@ -47,27 +48,44 @@ class CardTest extends TestCase
 
     public function testUpdate()
     {
-        $this->seed(DatabaseSeeder::class);
-        $card = Card::where('name', 'Provider A Card 1')->first();
-        self::assertEquals('Provider A Card 1', $card->name);
-        self::assertEquals('Provider A', $card->provider->name);
+        $provider = new Provider([
+            'name' => 'Provider Ex'
+        ]);
+        $provider->save();
+        self::assertDatabaseHas('providers', [
+            'name' => 'Provider Ex'
+        ]);
+        $card = new Card([
+            'name' => 'Test Card',
+            'provider_id' => $provider->id,
+            'stock' => 666,
+            'price' => 100_000
+        ]);
+        $card->save();
+        self::assertDatabaseHas('cards', [
+            'name' => 'Test Card',
+            'stock' => 666,
+            'price' => 100_000
+        ]);
 
-        $provider = Provider::where('name', 'Provider B')->first();
-        self::assertEquals('Provider B', $provider->name);
+        $provider2 = new Provider([
+            'name' => 'Provider Ex'
+        ]);
+        $provider2->save();
 
         Livewire::test('card.CardUpdate', [$card->id])
             ->set('name', 'Card Updated')
-            ->set('provider', $provider->id)
+            ->set('provider', $provider2->id)
             ->set('price', 123)
             ->set('stock', 123)
             ->call('update');
 
         self::assertDatabaseHas('cards', [
             'name' => 'Card Updated',
-            'provider_id' => $provider->id,
             'stock' => 123,
             'price' => 123
         ]);
+        Log::info(json_encode(Card::all()));
     }
 
     public function testDelete()

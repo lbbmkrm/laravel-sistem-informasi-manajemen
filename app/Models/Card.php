@@ -12,7 +12,8 @@ class Card extends Model
         'name',
         'provider_id',
         'stock',
-        'price'
+        'price',
+        'is_used'
     ];
 
     public function provider(): BelongsTo

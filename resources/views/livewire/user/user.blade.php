@@ -37,7 +37,7 @@
                     <th>Email</th>
                     <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
                     <th>Role</th>
-                    @if ($loginUser->is_admin)
+                    @if (auth()->user()->is_admin)
                         <th>&nbsp;</th>
                     @endif
                   </tr>
@@ -53,15 +53,15 @@
                     @else
                         <td>Member</td>
                     @endif
-                    @if ($loginUser->is_admin)
-                    <td class="d-flex justify-content-between align-items-center">
-                      <a wire:navigate href="{{ route('user.update', $user->id) }}" class="" style="">
-                        <i class="bi bi-pencil-square text-warning"></i>
-                      </a>
-                      <div wire:click='delete({{ $user->id }})'style="cursor: pointer">
-                        <i class="bi bi-trash text-danger"></i>
-                      </div>
-                    </td>
+                    @if (auth()->user()->is_admin)
+                        <td class="d-flex gap-3">
+                          <span wire:navigate wire:click="validateBeforeUpdate({{ $user->id }})" style="cursor: pointer">
+                            <i class="bi bi-pencil-square text-warning"></i>
+                          </span>
+                          <span wire:click="delete({{ $user->id }})" style="cursor: pointer">
+                            <i class="bi bi-trash text-danger"></i>
+                          </span>
+                        </td>
                     @endif
                   </tr>
                   @endforeach

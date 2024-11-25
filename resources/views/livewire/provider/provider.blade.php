@@ -75,13 +75,13 @@
                         {{ $totalSalesAmount }}
                       </td>
                       @if (auth()->user()->is_admin)
-                        <td class="d-flex justify-content-between align-items-center">
-                          <a wire:navigate href="{{ route('provider.update',$provider->id) }}" class="" style="">
+                        <td class="d-flex gap-3">
+                          <span wire:navigate wire:click="validateBeforeUpdate({{ $provider->id }})" style="cursor: pointer">
                             <i class="bi bi-pencil-square text-warning"></i>
-                          </a>
-                          <div wire:click='delete({{ $provider->id }})'style="cursor: pointer">
+                          </span>
+                          <span wire:click="delete({{ $provider->id }})" style="cursor: pointer">
                             <i class="bi bi-trash text-danger"></i>
-                          </div>
+                          </span>
                         </td>
                       @endif
                     </tr>

@@ -12,7 +12,8 @@ class Sale extends Model
         'card_id',
         'customer_id',
         'amount',
-        'total'
+        'total',
+        'is_used'
     ];
 
     public function user(): BelongsTo

@@ -3,7 +3,6 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,24 +10,32 @@ use Livewire\Component;
 class UserList extends Component
 {
     #[Title('Profiles')]
-    public $users;
-    public $loginUser;
-    public function mount()
-    {
-        $this->users = User::all();
-        $this->loginUser = Auth::user();
-    }
+    protected $listener = [
+        'dataChanged' => '$refresh',
+        'refreshComponent' => '$refresh'
+    ];
     public function render()
     {
-        return view('livewire.user.user');
+        return view('livewire.user.user', [
+            'users' => User::all()
+        ]);
     }
 
+    public function validateBeforeUpdate(int $id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            $this->dispatch('refreshComponent');
+            return;
+        }
+        return redirect()->route('user.update', $id);
+    }
     public function delete($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        $this->users = User::all();
-        $this->loginUser = Auth::user();
+        DB::transaction(function () use ($id) {
+            $user = User::where('id', $id)->lockForUpdate()->first();
+            $user->delete();
+        });
+        $this->dispatch('dataChanged');
     }
 }

@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class Provider extends Model
 {
     protected $fillable = [
-        'name'
+        'name',
+        'is_used'
     ];
 
     public function cards(): HasMany

@@ -11,6 +11,7 @@ use Livewire\Component;
 class CustomerList extends Component
 {
     #[Title('Customers')]
+    protected $listener = ['dataChanged' => 'refresh'];
     public $search;
     public function render()
     {
@@ -21,9 +22,32 @@ class CustomerList extends Component
         ]);
     }
 
+    public function validateBeforeUpdate(int $id)
+    {
+        $customer = Customer::find($id);
+
+        if (!$customer) {
+            $this->dispatch('refreshComponent');
+            return;
+        }
+        DB::update("UPDATE customers SET is_used = true WHERE id = ?;", [$id]);
+        return redirect()->route('customer.update', $id);
+    }
+
     public function delete($id)
     {
-        DB::delete("DELETE FROM customers WHERE id = {$id};");
-        return back()->with('success', 'Customer deleted has successfull');
+        $errorMessage = null;
+        DB::transaction(function () use ($id, &$errorMessage) {
+            $customer = Customer::lockForUpdate()->find($id);
+            if ($customer->is_used) {
+                $errorMessage = 'This data is used by other user';
+                return;
+            }
+            $customer->delete();
+        });
+        if ($errorMessage) {
+            session()->flash('error', $errorMessage);
+        }
+        $this->dispatch('dataChanged');
     }
 }

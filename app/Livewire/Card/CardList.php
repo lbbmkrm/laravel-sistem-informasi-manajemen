@@ -3,18 +3,20 @@
 namespace App\Livewire\Card;
 
 use App\Models\Card;
-use App\Models\Sale;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Provider;
 
 class CardList extends Component
 {
     use WithPagination;
     #[Title('Cards')]
+
+    protected $listener = [
+        'dataChanged' => '$refresh',
+        'refreshComponent' => '$refresh'
+    ];
 
     public $search;
     public function render()
@@ -30,10 +32,31 @@ class CardList extends Component
         ]);
     }
 
+    public function validateBeforeUpdate(int $id)
+    {
+        $card = Card::find($id);
+        if (!$card) {
+            $this->dispatch('refreshCompoent');
+            return;
+        }
+        DB::update("update cards SET is_used = true WHERE id = ?;", [$id]);
+        return redirect()->route('card.update', $id);
+    }
+
     public function delete(int $id)
     {
-        DB::delete("DELETE FROM cards WHERE id = $id;");
-
-        return back()->with('success', 'A card has been deleted');
+        $errorMessage = null;
+        DB::transaction(function () use ($id, &$errorMessage) {
+            $card = Card::lockForUpdate()->find($id);
+            if ($card->is_used) {
+                $errorMessage = 'This data is used by other user';
+                return;
+            }
+            $card->delete();
+        });
+        if ($errorMessage) {
+            session()->flash('error', $errorMessage);
+        }
+        $this->dispatch('refreshComponent');
     }
 }

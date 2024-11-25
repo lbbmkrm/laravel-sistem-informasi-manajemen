@@ -32,7 +32,7 @@
                     <div class="col-12">
                         <label for="customerName" class="form-label">Customer Name</label>
                         <input wire:model='customer' type="text" class="form-control" id="customerName">
-                        @error('customerName') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('customer') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">
                         <label for="amount" class="form-label">Amount</label>

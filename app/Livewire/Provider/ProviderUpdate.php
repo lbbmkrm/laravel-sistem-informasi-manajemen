@@ -3,6 +3,7 @@
 namespace App\Livewire\Provider;
 
 use App\Models\Provider;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -22,12 +23,22 @@ class ProviderUpdate extends Component
 
     public function update()
     {
-        DB::table('providers')->where('id', $this->provider->id)
-            ->update([
-                'name' => $this->providerName
-            ]);
-
-        return redirect()->route('provider')->with('success', 'Provider has updated.');
+        try {
+            DB::transaction(function () {
+                $provider = Provider::lockForUpdate()->find($this->provider->id);
+                if ($provider->updated_at != $this->provider->updated_at) {
+                    throw new Exception('Provider has been updated by other user');
+                }
+                $provider->name = $this->providerName;
+                $provider->save();
+            });
+            DB::update("UPDATE providers SET is_used = false WHERE id = ?;", [$this->provider->id]);
+            return redirect()->route('provider')->with('success', 'Provider has updated.');
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            DB::update("UPDATE providers SET is_used = false WHERE id = ?;", [$this->provider->id]);
+            return redirect()->route('provider');
+        }
     }
     public function render()
     {

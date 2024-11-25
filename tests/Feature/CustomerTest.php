@@ -44,10 +44,17 @@ class CustomerTest extends TestCase
 
     public function testCustomerUpdate()
     {
-        $this->seed(DatabaseSeeder::class);
+        $customer = new Customer([
+            'name' => 'John Doe',
+            'phone' => "080808",
+            'address' => 'Medan'
+        ]);
+        $customer->save();
+
         self::assertDatabaseHas('customers', [
             'name' => 'John Doe',
-            'address' => 'Jl. Merdeka No. 12, Jakarta, Indonesia'
+            'phone' => "080808",
+            'address' => 'Medan'
         ]);
         $customer = Customer::where('name', 'John Doe')->first();
 

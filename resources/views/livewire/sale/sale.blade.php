@@ -91,13 +91,13 @@
                       </td>
                       <td>{{ $sale->created_at }}</td>
                       @if (auth()->user()->is_admin)
-                        <td>
-                          <a wire:navigate href="{{ route('sale.update', $sale->id) }}">
+                        <td class="d-flex gap-3">
+                          <span wire:navigate wire:click="validateBeforeUpdate({{ $sale->id }})" style="cursor: pointer">
                             <i class="bi bi-pencil-square text-warning"></i>
-                          </a>
-                          <td wire:click="delete({{ $sale->id }})" style="cursor: pointer">
+                          </span>
+                          <span wire:click="delete({{ $sale->id }})" style="cursor: pointer">
                             <i class="bi bi-trash text-danger"></i>
-                          </td>
+                          </span>
                         </td>
                       @endif
                     </tr>

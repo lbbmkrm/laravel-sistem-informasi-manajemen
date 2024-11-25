@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 100)->nullable(false);
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
+            $table->boolean('is_used')->nullable(false)->default(false);
             $table->timestamps();
         });
     }

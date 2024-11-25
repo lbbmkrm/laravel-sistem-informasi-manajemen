@@ -73,13 +73,13 @@
                     <td>Rp.{{ number_format($card->price, 0, ',', '.') }}</td>
                     <td>{{ $card->created_at }}</td>
                     @if (auth()->user()->is_admin)
-                        <td>
-                          <a wire:navigate href="{{ route('card.update', $card->id) }}">
+                        <td class="d-flex gap-3">
+                          <span wire:navigate wire:click="validateBeforeUpdate({{ $card->id }})" style="cursor: pointer">
                             <i class="bi bi-pencil-square text-warning"></i>
-                          </a>
-                          <td wire:click='delete({{ $card->id }})'style="cursor: pointer">
+                          </span>
+                          <span wire:click="delete({{ $card->id }})" style="cursor: pointer">
                             <i class="bi bi-trash text-danger"></i>
-                          </td>
+                          </span>
                         </td>
                     @endif
                   </tr>

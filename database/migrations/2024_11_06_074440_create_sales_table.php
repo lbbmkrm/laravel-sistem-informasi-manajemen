@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->integer('amount')->nullable(false);
             $table->integer('total')->nullable(false);
+            $table->boolean('is_used')->nullable(false)->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();

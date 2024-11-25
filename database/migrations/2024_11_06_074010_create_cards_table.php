@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name', 100)->nullable(false);
             $table->integer('stock')->nullable();
             $table->integer('price')->nullable();
+            $table->boolean('is_used')->nullable(false)->default(false);
             $table->timestamps();
 
             $table->foreign('provider_id')->references('id')->on('providers')->nullOnDelete();

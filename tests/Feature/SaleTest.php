@@ -112,8 +112,12 @@ class SaleTest extends TestCase
             ->call('update');
 
         self::assertDatabaseHas('sales', [
+            'user_id' => $user->id,
+            'customer_id' => $customer->id,
+            'card_id' => $card->id,
             'amount' => 666
         ]);
+        Log::info(json_encode($card->id));
     }
 
     public function testSaleDelete()

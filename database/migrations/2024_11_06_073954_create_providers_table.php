@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100)->nullable(false);
+            $table->boolean('is_used')->nullable(false)->default(false);
             $table->timestamps();
         });
     }

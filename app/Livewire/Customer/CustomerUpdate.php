@@ -3,6 +3,7 @@
 namespace App\Livewire\Customer;
 
 use App\Models\Customer;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -20,19 +21,35 @@ class CustomerUpdate extends Component
     public function mount($id)
     {
         $this->customer = Customer::find($id);
+        if (!$this->customer) {
+            session()->flash('error', 'customer not found');
+            return redirect()->route('customer');
+        }
         $this->name = $this->customer->name;
         $this->phone = $this->customer->phone;
         $this->address = $this->customer->address;
     }
     public function update()
     {
-        DB::table('customers')->where('id', $this->customer->id)->update([
-            'name' => $this->name,
-            'phone' => $this->phone,
-            'address' => $this->address
-        ]);
-
-        return redirect()->route('customer')->with('success', 'Success Update Customer');
+        try {
+            DB::transaction(function () {
+                $customer = Customer::lockForUpdate()->find($this->customer->id);
+                if ($customer->updated_at != $this->customer->updated_at) {
+                    throw new Exception('Customer has been updated by other user');
+                }
+                $customer->update([
+                    'name' => $this->name,
+                    'phone' => $this->phone,
+                    'address' => $this->address
+                ]);
+            });
+            DB::update("UPDATE customers SET is_used = false WHERE id = ?;", [$this->customer->id]);
+            return redirect()->route('customer')->with('success', 'Success Update Customer');
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            DB::update("UPDATE customers SET is_used = false WHERE id = ?;", [$this->customer->id]);
+            return redirect()->route('customer');
+        }
     }
     public function render()
     {

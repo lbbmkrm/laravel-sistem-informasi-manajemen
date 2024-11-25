@@ -4,7 +4,6 @@ namespace App\Livewire\Provider;
 
 use Livewire\Component;
 use App\Models\Provider;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
@@ -13,6 +12,10 @@ class ProviderList extends Component
 {
     use WithPagination;
     #[Title('Providers')]
+    protected $listeners = [
+        'dataChanged' => '$refresh',
+        'refreshComponent' => '$refresh'
+    ];
     public $search;
     public function render()
     {
@@ -31,9 +34,31 @@ class ProviderList extends Component
         ]);
     }
 
+    public function validateBeforeUpdate(int $id)
+    {
+        $provider = Provider::find($id);
+        if (!$provider) {
+            $this->dispatch('refreshComponent');
+            return;
+        }
+        DB::update("UPDATE providers SET is_used = true WHERE id = ?;", [$id]);
+        return redirect()->route('provider.update', $id);
+    }
+
     public function delete(int $id)
     {
-        DB::delete("DELETE FROM providers WHERE id = $id;");
-        return $this->render()->with('success', 'a provider has deleted');
+        $errorMessage = null;
+        DB::transaction(function () use ($id, &$errorMessage) {
+            $provider = Provider::lockForUpdate()->findOrFail($id);
+            if ($provider->is_used) {
+                $errorMessage = 'This data is used by other user';
+                return;
+            }
+            $provider->delete();
+        });
+        if ($errorMessage) {
+            session()->flash('error', $errorMessage);
+        }
+        $this->dispatch('dataChanged');
     }
 }
