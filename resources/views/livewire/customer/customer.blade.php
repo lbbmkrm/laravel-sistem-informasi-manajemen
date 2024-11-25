@@ -11,6 +11,26 @@
     </div><!-- End Page Title -->
 
     <section class="section">
+      @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                <div class="d-flex gap-4">
+                    <span><i class="bi bi-exclamation-triangle"></i></span>
+                    <div class="d-flex flex-column gap-2">
+                        <p class="mb-0">{{ session('error') }}</p>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                <div class="d-flex gap-4">
+                    <span><i class="bi bi-check-circle"></i></span>
+                    <div class="d-flex flex-column gap-2">
+                        <p class="mb-0">{{ session('success') }}</p>
+                    </div>
+                </div>
+            </div>
+        @endif
       <div class="row">
         <div class="col-lg-12">
 

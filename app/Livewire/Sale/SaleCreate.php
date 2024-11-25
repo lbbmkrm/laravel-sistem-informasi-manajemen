@@ -32,9 +32,7 @@ class SaleCreate extends Component
     public function create()
     {
         $user = Auth::user();
-        $customer = Customer::firstOrCreate(['name' => $this->customerName], [
-            'name' => $this->customerName
-        ]);
+        $customer = Customer::firstOrCreate(['name' => $this->customerName]);
 
         $card = Card::find($this->card);
 

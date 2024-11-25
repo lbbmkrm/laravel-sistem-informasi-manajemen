@@ -3,6 +3,7 @@
 namespace App\Livewire\Sale;
 
 use App\Models\Card;
+use App\Models\Customer;
 use App\Models\Sale;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -15,25 +16,29 @@ class SaleUpdate extends Component
 
     public $sale;
     public $card;
-    public $customer;
+    public $customer = null;
     public $amount;
 
-    private array $cards;
-
     public $cardList;
+    public $customerList;
 
     public function mount(int $id)
     {
         $this->sale = Sale::find($id);
+
         if (!$this->sale) {
             session()->flash('error', 'Sale not found');
             return redirect()->route('sale');
         }
+
         $this->card = $this->sale->card_id;
-        $this->cardList = Card::all();
+        $this->customer = $this->sale->customer_id;
         $this->amount = $this->sale->amount;
-        $this->customer = $this->sale->customer->name;
+
+        $this->cardList = Card::all();
+        $this->customerList = Customer::all();
     }
+
     public function render()
     {
         return view('livewire.sale.sale-update');
@@ -43,7 +48,7 @@ class SaleUpdate extends Component
     {
         $this->validate([
             'card' => 'required|exists:cards,id',
-            'customer' => 'required|string|max:255',
+            'customer' => 'nullable|exists:customers,id',
             'amount' => 'required|integer|min:1',
         ]);
 
@@ -57,19 +62,16 @@ class SaleUpdate extends Component
 
                 $sale->update([
                     'card_id' => $this->card,
+                    'customer_id' => $this->customer ?: null,
                     'amount' => $this->amount,
                     'total' => Card::find($this->card)->price * $this->amount,
                 ]);
-
-                if ($sale->customer) {
-                    $sale->customer->update(['name' => $this->customer]);
-                }
             });
             DB::update("UPDATE sales SET is_used = false WHERE id = ?;", [$this->sale->id]);
             return redirect()->route('sale')->with('success', 'Sale data updated successfully');
         } catch (Exception $e) {
-            session()->flash('error', $e->getMessage());
             DB::update("UPDATE sales SET is_used = false WHERE id = ?;", [$this->sale->id]);
+            session()->flash('error', $e->getMessage());
             return redirect()->route('sale');
         }
     }

@@ -116,7 +116,7 @@
 
     </ul>
   </aside><!-- End Sidebar -->
-
+  
   {{ $slot }} <!-- Slot for dynamic content -->
 
   <!-- ======= Footer ======= -->

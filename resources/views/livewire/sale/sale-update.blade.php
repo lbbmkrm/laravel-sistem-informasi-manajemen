@@ -22,7 +22,10 @@
                     <div class="col-12">
                         <label for="card" class="form-label">Card</label>
                         <select wire:model='card' class="form-select form-select mb-3" >
-                            <option value="{{ $sale->card_id }}" ">{{ $sale->card->name }}</option>
+                            @if ($sale->customer)
+                                <option value="{{ $sale->card_id }}" ">{{ $sale->card->name }}</option>
+                            @endif
+                            <option value="" "><i class="bi bi-three-dots"></i></option>
                             @foreach ($cardList as $card)
                                 <option value="{{ $card->id }}">{{ $card->name }}</option>
                             @endforeach
@@ -30,8 +33,13 @@
                         @error('card') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">
-                        <label for="customerName" class="form-label">Customer Name</label>
-                        <input wire:model='customer' type="text" class="form-control" id="customerName">
+                        <label for="customer" class="form-label">Customer Name</label>
+                        <select wire:model='customer' class="form-select form-select mb-3">
+                            <option value="">-- Select Customer --</option> <!-- Tambahkan opsi kosong -->
+                            @foreach ($customerList as $customer)
+                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            @endforeach
+                        </select>
                         @error('customer') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="col-12">
