@@ -11,7 +11,7 @@ class ProviderCreate extends Component
 {
     #[Title('Provider')]
 
-    #[Validate('required')]
+    #[Validate('required|string|max:100')]
     public $name;
 
     public function create()

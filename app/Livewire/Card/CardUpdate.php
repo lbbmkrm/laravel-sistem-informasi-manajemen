@@ -7,6 +7,7 @@ use App\Models\Provider;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CardUpdate extends Component
@@ -14,9 +15,17 @@ class CardUpdate extends Component
     #[Title('Card Update')]
 
     public $card;
+
+    #[Validate('required|string')]
     public $name;
+
+    #[Validate('required|string')]
     public $provider;
+
+    #[Validate('nullable|integer')]
     public $stock;
+
+    #[Validate('nullable|integer')]
     public $price;
     public $providersList;
     public array $providers;

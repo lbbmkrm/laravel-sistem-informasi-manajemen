@@ -15,7 +15,7 @@ class SaleCreate extends Component
     #[Title('Sale')]
 
 
-    #[Validate('required')]
+    #[Validate('required|string')]
     public $customerName;
 
     #[Validate('required')]

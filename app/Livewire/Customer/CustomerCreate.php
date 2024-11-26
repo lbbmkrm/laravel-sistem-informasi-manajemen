@@ -11,13 +11,13 @@ class CustomerCreate extends Component
 {
     #[Title('Customer')]
 
-    #[Validate('required')]
+    #[Validate('required|string|max:100')]
     public $name;
 
-    #[Validate('max:20')]
+    #[Validate('nullable|string|max:20')]
     public $phone;
 
-    #[Validate('string')]
+    #[Validate('nullable|string')]
     public $address;
 
     public function create()

@@ -6,6 +6,7 @@ use App\Models\Provider;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class ProviderUpdate extends Component
@@ -13,6 +14,8 @@ class ProviderUpdate extends Component
     #[Title('Provider Update')]
 
     public $provider;
+
+    #[Validate('required|string|max:100')]
     public $providerName;
 
     public function mount(int $id)

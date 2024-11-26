@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class CustomerUpdate extends Component
@@ -13,12 +14,18 @@ class CustomerUpdate extends Component
     #[Title('Customer')]
 
     public $customer;
+
+    #[Validate('required|string|max:100')]
     public $name;
+
+    #[Validate('nullable|string|max:20')]
     public $phone;
+
+    #[Validate('nullable|string')]
     public $address;
 
 
-    public function mount($id)
+    public function mount(int $id)
     {
         $this->customer = Customer::find($id);
         if (!$this->customer) {
